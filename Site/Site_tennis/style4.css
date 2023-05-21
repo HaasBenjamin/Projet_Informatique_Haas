@@ -1,0 +1,44 @@
+body { 
+background-image:url(engrenage.jpeg);
+background-repeat:no-repeat;
+background-position: align-center;
+background-size: 100%;
+font-size: 100%;
+text-align: center ;
+color: black ;
+}
+
+p{
+	font-size:250%;
+}
+
+
+h1{
+	color:black;
+	size:300%
+}
+b{
+	color:red;
+	
+}
+li{
+	text-align:left;
+	color:red;
+	font-size:100%
+}
+div{
+	 font-size:300%;
+}
+a:link {
+	font-size:100%
+	color:navy;
+}
+a:visited {
+	color:navy;
+}
+h1 {
+	font-size: 250%;
+}
+
+
+

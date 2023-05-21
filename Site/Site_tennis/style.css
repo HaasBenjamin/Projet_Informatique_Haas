@@ -1,0 +1,29 @@
+body { 
+color:black;
+background-image:url(fondTennis.jpg);
+background-repeat:no-repeat;
+background-position: align-center;
+background-size: 100%;
+font-size: 100%;
+text-align: center ;
+color: black ;
+}
+
+div{
+	 color: navy ;
+	 text-align:left;
+}
+a:link {
+	font-size:300%
+}
+a:visited {
+	color: navy;
+}
+h1 {
+	font-size: 500%;
+	color:white;
+}
+
+p {
+	font-size:350%
+}

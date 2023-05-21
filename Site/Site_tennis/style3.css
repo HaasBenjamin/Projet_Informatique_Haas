@@ -1,0 +1,49 @@
+body { 
+color:black;
+background-image:url(coupe.jpg);
+background-repeat:no-repeat;
+background-position: align-center;
+background-size: 100%;
+font-size: 100%;
+text-align: center ;
+color: black ;
+}
+
+h1{
+	font-size:250%;
+	color:white;
+}
+
+h2{
+	font-size:250%;
+}
+p{
+	font-size:150%;
+}
+	
+}
+li{
+	text-align:left;
+	font-size:350%
+}
+div{
+	 font-size:300%;
+}
+a:link {
+	font-size:100%
+}
+a:visited {
+	color:navy;
+}
+
+
+
+
+ul {
+   list-style-type: none;
+   font-size:250%;
+   text-align:left;
+}
+li:before {
+   content: '- ';
+}
