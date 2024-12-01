@@ -1,0 +1,124 @@
+[
+  {
+    "name": "repas de winnie",
+    "description": "Nourrissage de notre ours brun fétiche",
+    "duration": 15,
+    "quota": 200
+  },
+  {
+    "name": "promenade de norm",
+    "description": "Retour à la banquise pour quelques minutes pour nos ours polaires",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "repas de kerchak",
+    "description": "Tempête de banane pour les gorilles",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "show de césar",
+    "description": "Spectacle de danse entre nos soigneurs et nos chimpanzés",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "roulade de po",
+    "description": "Repas des animaux préférés des zoo, les pandas",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "chasse de sher khan",
+    "description": "Une brebis et un tigre, un beau repas",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "scar tue mufasa ",
+    "description": "Regroupement des lions et des lionnes",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "course des panthères",
+    "description": "Sortie des panthères dans leur enclos",
+    "duration": 25,
+    "quota": 150
+
+  },
+  {
+    "name": "réunion des girafes",
+    "description": "Préparez-vous à levez la tête, le nourrissage des girafes se passe là-haut",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "ronde des rhino",
+    "description": "Ces animaux à la peaux rugueuse aiment malgré tout se faire caresser lors d'une petite ronde",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "bain des hippo",
+    "description": "Un bon bain qui fait toujours du bien",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name" : "envol des aigles",
+    "description": "Un spectacle en plein air regroupant les plus grands rapaces",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "footing en savane",
+    "description": "Balade tranquille des antilopes",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "sage de la fôret",
+    "description": "La balade en troupeau des éléphants vous fera trembler",
+    "duration": 75,
+    "quota": 2000
+  },
+  {
+    "name": "ça mouille ",
+    "description": "Petit plongeon des crocodiles",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "cueillete des lémurs",
+    "description": "Des cadeaux aux lémurs pour les voir se débattre",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "chasse des stark",
+    "description": "Une chasse en meute dirigé par l'alpha stark ",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "envole des vautours",
+    "description": "De leurs postures majestueux, ils voleront au dessus de vos têtes pour vous impressionner",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "larmes de crocodile",
+    "description": "Attention aux téléphones, les crocodiles auront faim",
+    "duration": 75,
+    "quota": 200
+  },
+  {
+    "name": "galipettes des iguanes",
+    "description": "Un défilé haut en couleurs",
+    "duration": 75,
+    "quota": 200
+  }
+
+]

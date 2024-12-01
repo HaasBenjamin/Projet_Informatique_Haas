@@ -1,0 +1,66 @@
+﻿@using MonApplicationWebMVC.Models
+@model List<Pays>
+@{
+    Layout = "~/Views/Shared/MonModeleDePage.cshtml";
+}
+@Html.Label("Liste de tous les pays")
+
+<ul id="paysDetails">
+    @foreach (var pays in @Model)
+    {
+        @Html.Partial("VuePays",pays)
+    }
+</ul>
+<div>@Html.ActionLink($"Ajouter un pays !", "AjouterPays", "Home")</div>
+<div>@Html.ActionLink($"Retour à la page d'accueil", "Index", "Home")</div>
+
+
+@section Scripts{
+<script>
+    $(document).ready(function () {
+            $('#paysDetails').css("background-color", "#E1E2E1");
+    });
+
+    function ConversionDeviseToEuro_CoteServeur(paysName) {
+        var MontantEnDevise = $("#tbMontantEnDevise_" + paysName).val();
+        var taux = $("#txConv_" + paysName).html();
+        var param = { MontantEnDevise, taux };
+        $.ajax({
+            url: '@Url.Action("_AjaxConversionDeviseToEuroWithTaux", "Home")',
+            type: "POST",
+            cache: false,
+            data: param,
+            success: function (result) {
+                $("#tbMontantEnEuro_" + paysName).val(result);
+            }
+        })
+        return false;
+    };
+
+    function SupprimerPays(paysId, paysNom) {
+        if (confirm('Vraiment supprimer le pays ' + paysNom + '?')) {
+            var params = { paysId };
+            $.ajax({
+                url: '@Url.Action("_AjaxSupprimerPays", "Home")',
+                type: "POST",
+                cache: false, 
+                data: params, 
+                success: function (result) {
+                        RefreshPart(paysNom);
+                }
+            })
+        }
+        return false;
+    }
+
+    function Refresh() {
+        var urlAction = '@Url.Action("VueListePays", "Home")';
+        window.location = urlAction;
+    }
+
+    function RefreshPart(paysNom) {
+        $("ul").children().remove("li." + paysNom);
+    }
+</script>
+}
+

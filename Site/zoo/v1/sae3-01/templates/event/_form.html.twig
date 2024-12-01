@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+        {{ form_row(form.name,{'label': 'Nom'}) }}
+        {{ form_row(form.description,{'label':'Description'}) }}
+        {{ form_row(form.duration,{'label':'Durée en minute'}) }}
+        {{ form_row(form.quota,{'label': 'Nombre de Visiteurs'}) }}
+        {{ form_row(form.enclosure,{'label':'Enclosure','placeholder' :'Enclosure ?' }) }}
+<button type="submit" class="w-100 d-inline-block btn btn-primary">{{ submit_label }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  db: 
+    image: mariadb:10.2.25
+    environment:
+      - MYSQL_USER=${MYSQL_USER:?error}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:?error}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:?error}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:?error}
+    ports: 
+      -  3306:3306
+    restart: always
+    networks:
+      - production
+    volumes:
+      - ../mariaDB_prod:/var/lib/mysql:Z  
+  php:
+    image: ${PHP_IMAGE:?error}
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - APP_DEBUG=${APP_DEBUG:-0}  
+      - APP_ENV=${APP_ENV:-prod}
+      - TRUSTED_PROXIES=${TRUSTED_PROXIES:-10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+      - APP_SECRET=${APP_SECRET:?error}
+      - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN:?error}
+      - DATABASE_URL=${DATABASE_URL:?error}
+      - TRUSTED_HOSTS=${TRUSTED_HOSTS:?error}
+    networks:
+      - production  
+  nginx:
+    image: ${NGINX_IMAGE:?error}
+    restart: always
+    depends_on: 
+      - php
+    ports: 
+      - 8080:80    
+    networks:
+      - production
+networks:
+  production:

@@ -1,0 +1,171 @@
+.content,.avatar,.Information,.Important,.Title,.date,.bio,
+.movie,.movies,.poster,.info,.inf_movie,.role,.date,.place.tiltle_movie,.m{
+    display:flex;
+
+}
+html{
+    width:100%;
+    height: 100%;
+    margin:0;
+
+}
+.bouton{
+    display: flex;
+    justify-content: center;
+}
+.bouton:link{
+    text-decoration: none;
+    color: greenyellow;
+    font-family:cursive;
+    font-size: large;
+
+}
+.header{
+    display: flex;
+    justify-content: center;
+}
+h1,.bouton{
+
+    color: greenyellow;
+}
+body{
+    background-image: url("../img/background.png");
+    background-size: cover;
+    height: 90%;
+
+    flex-direction:column ;
+    display: flex;}
+.date{
+    flex-direction: row;
+    justify-content: center;
+}
+.presentation{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+body,.content,.Information,.Important,.info{
+    flex-direction: column;
+}
+.Important{
+    align-items: center;
+
+}
+.content{
+    overflow-y: auto;
+}
+.movie{
+    flex-direction: column;
+    flex:1;
+
+}
+.avatar{
+    justify-content: center;
+}
+.inf_movie{
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.tiltle_movie{
+    flex: 1;
+}
+.info{
+    flex: 1;
+    justify-content: space-evenly;
+}
+.movies{
+    align-items: center;
+    flex-direction: column;
+
+}
+footer{
+    display: flex;
+    color: greenyellow;
+    text-align: center;
+    font-size: x-large;
+    flex-direction: column;
+}
+
+.photo{border-radius: 75px 0px 106px 10px;
+    transition:0.5s ;}
+
+.photo:hover{
+    transform: scale(1.1);
+    box-shadow: 10px 5px 5px 5px rgba(214,162,30,1);}
+
+
+.movie{  text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.movie:link{
+    text-decoration: none;
+    color: darkblue;
+    font-family:cursive;
+    font-size: large;
+}
+.avatarid{
+    border-radius: 42px 42px 42px 42px;
+}
+
+@media screen and (min-width:500px){
+
+    .presentation{
+        flex-direction: row;
+    }
+    .Important{
+        align-items: start;
+    }
+    .movie{
+        flex-direction: row;
+        flex: 1;
+    }
+    .movies{
+        align-items: start;
+
+
+    }
+    .info{
+        flex-wrap: wrap;
+    }
+
+    .inf_movie{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+
+
+    }
+
+    .tiltle_movie{
+        flex: 1;
+
+    }
+
+
+}
+@media screen and (min-width:1000px){
+    body{
+        width:1000px;
+        margin: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

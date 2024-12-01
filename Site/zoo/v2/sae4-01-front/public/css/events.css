@@ -1,0 +1,73 @@
+.bg-warning{
+    padding-left: 80VH;
+    padding-right: 80VH;
+}
+
+img{
+    width: 300px;
+    height: 300px;
+}
+
+
+html,body{
+    height: 100%;
+
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+    background: url('../img/event_img.png');
+    background-size : 100% 100%;
+    background-blend-mode: darken;
+
+}
+
+.active.carousel-item{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.active.carousel-item >*{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-self: center;
+}
+
+.link-event {
+    text-decoration: none;
+    color: black;
+
+}
+
+.app__main,.carousel,.app{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.event *{
+    font-size: 30px;
+}
+
+div#root{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.carousel{
+    align-self: center;
+    justify-content:center ;
+}
+
+.carousel-inner{
+    text-align: center;
+    width: 75%;
+
+}

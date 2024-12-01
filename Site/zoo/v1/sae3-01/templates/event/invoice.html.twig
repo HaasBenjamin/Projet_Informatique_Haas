@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Votre facture {% endblock %}
+
+{% block stylesheets %}
+    <style>
+        ul.invoice{
+            display: flex;
+            background-image: url("{{ asset("img/invoice.png") }}");
+            color: black;
+            font-size: 25px;
+            width: max-content;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 5%;
+        }
+        @media (min-width: 500px){
+            ul.invoice{
+                margin-left: 30%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<h1 class="subsectionTitle">Récapitulatif de votre commande</h1>
+<ul class="invoice">
+    <li>Événement : </li>
+    <ul>
+        <li>Nom de l'événement : {{ event.name |capitalize}} </li>
+        <li>Enclos lié : {{ event.enclosure.name |capitalize}}</li>
+        <li>Description : {{ event.description |capitalize}}</li>
+        <li>Durée de l'événement : {{ event.duration }} minutes</li>
+    </ul>
+    <li>Inscription : </li>
+    <ul>
+        <li>Date de l'événement : {{ registration.date |date('d-m-Y') }}</li>
+        <li>Nombre de places réservées : {{ registration.nbReservedPlaces }} places</li>
+    </ul>
+    <li>Animaux concernés</li>
+    <ul>
+        {% for specie in species %}
+        <li>{{ specie.name | capitalize}}</li>
+        {% endfor %}
+
+    </ul>
+        <li>Informations utilisateurs : </li>
+        <ul>
+            <li>Nom : {{ app.user.lastName |capitalize}}</li>
+            <li>Prénom : {{ app.user.firstName |capitalize}}</li>
+            <li>Email : {{ app.user.email }}</li>
+            <li>Date de naissance : {{ app.user.dateOfBirth |date('d-m-Y')}}</li>
+        </ul>
+        <li>Prix de l'inscription : {{ 3.99 * registration.nbReservedPlaces }}€ </li>
+    </ul>
+    <h1>Merci de votre visite !</h1>
+{% endblock %}

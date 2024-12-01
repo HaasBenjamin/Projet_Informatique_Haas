@@ -1,0 +1,15 @@
+﻿
+<h2>
+    <div>
+    @Html.ActionLink($"Naviguer vers la liste des pays", "AccessDatabase", "Home")
+    </div>
+    <div>
+    @Html.ActionLink($"Accéder au formulaire", "MonFormulaire", "Home")
+    </div>
+    <div>
+        @Html.ActionLink($"Accéder au formulaire de création", "AjouterPays", "Home")
+    </div>
+</h2>
+@{
+    Layout = "~/Views/Shared/MonModeleDePage.cshtml";
+}

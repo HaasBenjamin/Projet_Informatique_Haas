@@ -1,0 +1,18 @@
+[
+    {
+        "name": "mammifere",
+        "description": "Animaux vertébrés, possèdent des glandes mammaires et nourrissent leur petits avec du lait"
+    },
+    {
+        "name": "oiseau",
+        "description": "Animal vertébré ovipare, couvert de plumes, muni d'un bec sans dents, de deux pattes et de deux ailes"
+    },
+    {
+        "name": "reptile",
+        "description": "Vertébré à respiration pulmonaire, à tégument recouvert d'écailles kératinisées et à température variable"
+    },
+    {
+        "name": "amphibien",
+        "description": "Vertébré anamniote à peau nue, aux membres conformés en pattes, généralement capable de respirer hors de l'eau "
+    }
+]

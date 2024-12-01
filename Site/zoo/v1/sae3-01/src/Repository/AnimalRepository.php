@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\Animal;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+/**
+ * @extends ServiceEntityRepository<Animal>
+ *
+ * @method Animal|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Animal|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Animal[]    findAll()
+ * @method Animal[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class AnimalRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Animal::class);
+    }
+
+    /**
+     * @return Animal[]
+     */
+    public function getAllAnimalsWithPicture(string $search): array
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb->leftJoin('a.image', 'image')
+            ->leftJoin('a.species', 'species')
+            ->addSelect('image')
+            ->addSelect('species')
+            ->where('a.name LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->orderBy('a.name');
+
+        return $qb->getQuery()->execute();
+    }
+
+    public function getAllASpeciesInEnclosure(int $idEnclosure): array
+    {
+        $query = $this->createQueryBuilder('a');
+        $query->leftJoin('a.species', 'species')
+            ->leftJoin('a.enclosure', 'enclosure')
+            ->select('DISTINCT species.name')
+            ->where('enclosure.id = :id')
+            ->setParameter('id', $idEnclosure);
+
+        return $query->getQuery()->execute();
+    }
+
+    //    /**
+    //     * @return Animal[] Returns an array of Animal objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('a.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Animal
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+}

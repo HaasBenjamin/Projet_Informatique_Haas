@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des évènements {% if enclosure %} pour l'enclos {{ name }} {% endif %} {% endblock %}
+{% block stylesheets %} <link href="{{ asset('css/Event.css') }}" rel="stylesheet"> {% endblock %}
+{% block body %}
+
+    <h1 class="subsectionTitle text-center">Liste des évènements {% if enclosure %} pour l'enclos {{ name }} {% endif %}</h1>
+    {{include('event/_carousel.html.twig')}}
+{% endblock %}

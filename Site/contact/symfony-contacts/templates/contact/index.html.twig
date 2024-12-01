@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contacts par ordre croissant{% endblock %}
+
+{% block body %}
+<h1>Liste des contacts par ordre croissant</h1>
+        {{ include('/contact/_contacts.html.twig') }}
+{% endblock %}

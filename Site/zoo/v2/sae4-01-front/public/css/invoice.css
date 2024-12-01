@@ -1,0 +1,15 @@
+ul.invoice{
+    display: flex;
+    background-image: url("../img/invoice.png");
+    color: black;
+    font-size: 25px;
+    width: max-content;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 5%;
+}
+@media (min-width: 500px){
+    ul.invoice{
+        margin-left: 30%;
+    }
+}

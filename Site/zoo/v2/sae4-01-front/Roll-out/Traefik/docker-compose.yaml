@@ -1,0 +1,95 @@
+version: '3.9'
+
+services:
+  traefik:
+    image: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker"
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.https.address=:443"
+      - "--log.level=DEBUG"
+    networks:
+      - production
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    labels:
+      - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+  front:
+    labels:
+      - traefik.http.routers.front-http.rule=Host(`10.31.33.187`)
+      - traefik.http.routers.front-http.entrypoints=http
+      - traefik.http.routers.front-http.middlewares=https-redirect
+      - traefik.http.routers.front-https.rule=Host(`10.31.33.187`)
+      - traefik.http.routers.front-https.entrypoints=https
+      - traefik.http.routers.front-https.tls=true
+      - traefik.http.services.front.loadbalancer.server.port=80
+    networks:
+      - production
+    build:
+      context: ./sae4-01-front
+      args:
+        REACT_APP_API_ENTRYPOINT: ${REACT_APP_API_ENTRYPOINT:?Variable REACT_APP_API_ENTRYPOINT not set, please define it in your .env file}
+    restart: always
+
+
+  db:
+    image: mariadb:10.2.25
+    environment:
+      - MYSQL_USER=${MYSQL_USER:?error}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:?error}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:?error}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:?error}
+    ports:
+      - 3306:3306
+    restart: always
+    networks:
+      - production
+    volumes:
+      - ./mariaDB_prod:/var/lib/mysql:Z
+  php:
+    build:
+      context: ./sae4-01-api
+      target: zootechpark_php_prod
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - APP_DEBUG=${APP_DEBUG:-0}
+      - APP_ENV=${APP_ENV:-prod}
+      - TRUSTED_PROXIES=${TRUSTED_PROXIES:-10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+      - APP_SECRET=${APP_SECRET:?error}
+      - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN:?error}
+      - DATABASE_URL=${DATABASE_URL:?error}
+      - TRUSTED_HOSTS=${TRUSTED_HOSTS:?error}
+    networks:
+      - production
+
+  web-back:
+    build:
+      context: ./sae4-01-api
+      target: zootechpark_nginx_prod
+    restart: always
+    depends_on:
+      - php
+    ports:
+      - 8081:80
+    networks:
+      - production
+    labels:
+      - traefik.http.routers.back-http.rule=Host(`10.31.33.187`) && (PathPrefix(`/api`, `/bundles`, `/login`, `/register`))
+      - traefik.http.routers.back-http.entrypoints=http
+      - traefik.http.routers.back-http.middlewares=https-redirect
+      - traefik.http.routers.back-https.rule=Host(`10.31.33.187`) && (PathPrefix(`/api`, `/bundles`, `/login`, `/register`))
+      - traefik.http.routers.back-https.entrypoints=https
+      - traefik.http.routers.back-https.tls=true
+      - traefik.http.services.back.loadbalancer.server.port=80
+networks:
+  production:

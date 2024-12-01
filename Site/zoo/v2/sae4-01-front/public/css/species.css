@@ -1,0 +1,11 @@
+ul{
+    margin-top: 10px
+}
+li{
+    padding-left: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    backdrop-filter: blur(10px) brightness(60%);
+    border: 1px solid white;
+    border-radius: 6px;
+}

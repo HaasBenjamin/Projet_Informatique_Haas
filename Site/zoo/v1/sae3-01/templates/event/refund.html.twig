@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% set title="Remboursement pour l'évènement #{event.name} de #{registration.user.firstname} #{registration.user.lastname}" %}
+{% block title %}
+ {{ title}}
+{% endblock %}
+
+{% block body %}
+    <h1 class="mainTitle">{{ title }}</h1>
+    <p>Déçu de voir que vous ne pourriez pas assister à l'évènement, un remboursement sera fait dans les plus brefs délais.
+        En espérant vous revoir.
+    </p>
+
+    <img src="{{ asset('img/giphy.gif') }}" alt="gif" style="width:128px;height:128px;">
+
+    <table class="table" style="color:white">
+        <thead>
+            <tr>
+                <th scope="col">Nom Évènement</th>
+                <th scope="col">Date Évènement</th>
+                <th scope="col">Nombre de place de réservés</th>
+                <th scope="col">Prix unitaire</th>
+                <th scope="col">Montant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ event.name | capitalize }}</td>
+                <td>{{ registration.date | date("Y-m-d H:i:s") }}</td>
+                <td>{{ registration.nbReservedPlaces }}</td>
+                <td>3.99</td>
+                <td class="table-warning">{{ registration.nbReservedPlaces * 3.99 }} euros</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex flex-column">
+    <h2 class="align-self-start">Besoin d'aides ?</h2>
+    <p>
+        Si vous avez des difficultés avec le remboursement ou si
+        vous souhaitez obtenir plus d'informations, n'hésitez pas
+        à nous contacter par e-mail à service.client@zootechparl.com
+        ou par téléphone au 03 26 91 30 02. Notre équipe de support client est là
+        pour vous aider et se fera un plaisir de répondre à vos questions.
+    </p>
+    </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition de {{ contact.lastname }}, {{ contact.firstname }}{% endblock %}
+
+{% block body %}
+    <h1>Édition de {{ contact.lastname }}, {{ contact.firstname }}</h1>
+    {{ include('contact/_form.html.twig', {'submit_label' : 'Modifier', 'form' : form}, with_context = false) }}
+{% endblock %}

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  react_app_dev:
+    build:
+      context: .
+      target: front_dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/usr/src/admin/src:rw,crlf
+    environment:
+      - REACT_APP_API_ENTRYPOINT=${REACT_APP_API_ENTRYPOINT:?Variable REACT_APP_API_ENTRYPOINT not set, please define it in your .env file}

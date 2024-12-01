@@ -1,0 +1,24 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+footer > * {
+    margin-right: 5px;
+}
+body{
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (min-width: 500px){
+    .map{
+        margin: 30px;
+    }
+    footer > * {
+        margin-right: 50px;
+    }
+
+}

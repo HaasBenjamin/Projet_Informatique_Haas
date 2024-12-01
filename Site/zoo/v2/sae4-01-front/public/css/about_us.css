@@ -1,0 +1,16 @@
+body{
+    color: white;
+    backdrop-filter: blur(20px) brightness(60%);
+}
+img{
+    margin-top: 20px;
+}
+ul{
+    margin-top: 20px;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}

@@ -1,0 +1,21 @@
+.navbar{
+    backdrop-filter:  brightness(60%);
+    width: 80%;
+    margin: 0 auto;
+}
+.navbar-custom{
+    border : 2px white solid;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+.nav-link {
+    color: white !important;
+}
+.navbar-brand{
+    color: white !important;
+}
+
+.userButton{
+    width: 25%;
+    margin-right: 10px;
+}

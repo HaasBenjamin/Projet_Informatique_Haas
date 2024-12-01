@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une nouvelle adresse{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset("js/addressRequest.js")}}"></script>
+    <script src="{{ asset("js/suggestionsListeners.js")}}"></script>
+{% endblock %}
+{% block body %}
+    <h1>Ajout d'une nouvelle adresse <span><a href="{{ path("app_home") }}" class="btn btn-light m-2">Page d'accueil</a></span></h1>
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.addressSupplement, {'label' :"Complément d'adresse", 'attr': {'class': 'form-control', 'list': 'suggestionsSupplement'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.city, {'label' :"Ville",'attr': {'class': 'form-control', 'list': 'suggestionsCity'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.postalCode, {'label' :"Code Postal",'attr': {'class': 'form-control', 'list': 'suggestionsCode'}}) }}
+    </div>
+
+    <button type="submit" class="btn btn-success forbidden hidden m-2">Ajouter une nouvelle adresse</button>
+    <div class="alert alert-danger forbidden mt-3" role="alert">Saisissez une adresse valide !</div>
+    {{ form_end(form) }}
+
+    <datalist id="suggestionsSupplement">
+    </datalist>
+    <datalist id="suggestionsCity">
+    </datalist>
+    <datalist id="suggestionsCode">
+    </datalist>
+    <script>
+        suggestionsAddress();
+        suggestionsPostalCode()
+        IsFormValid();
+
+    </script>
+
+
+
+{% endblock %}

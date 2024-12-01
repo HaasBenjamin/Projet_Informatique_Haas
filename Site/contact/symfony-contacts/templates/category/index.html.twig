@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+    <h1>Liste des catégories</h1>
+    <ul class="categories">
+        {% for categorie in categories %}
+            {% set category = categorie.category %}
+            <li><a href="{{ path('app_category_show', {id: category.id}) }}">{{ category.name }} [{{ category.id }}] <span class="badge bg-secondary">{{ categorie.count }}</span></a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

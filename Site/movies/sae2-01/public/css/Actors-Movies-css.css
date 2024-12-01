@@ -1,0 +1,163 @@
+body,.presentation,.information,.Important,.Actors,.Actor,.Personnal{
+    display:flex;
+
+}
+
+
+body,html{
+    width:100%;
+    height: 100%;
+    margin:0;
+
+}
+
+body{
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+}
+
+.information>*{
+    border: 2px solid black;
+    flex:1;
+    font-size: larger;
+}
+
+.information{
+    flex-direction: column;
+
+}
+.Important>*{
+    flex:1;
+}
+.date{
+    border-left: 2px solid black;
+    text-align: right;
+}
+
+.Original{
+    text-align: right;
+}
+
+.content{
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.Actors{
+    flex-direction: column;
+}
+
+.Actor{
+    border : 2px solid blue;
+    margin : 2px;
+    flex-direction: column;
+}
+.Actor>*{
+    margin: 5px;
+
+}
+
+.Personnal>*{
+    margin: 10px;
+    font-size: larger;
+    flex: 1;
+    border : 1px solid black;
+    text-align: center;
+}
+
+.Personnal{
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.presentation{
+    border : 2px solid red;
+    margin : 2px;
+    flex-direction: column;
+}
+
+.presentation>*{
+    margin : 5px;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link{
+    color:black;
+}
+
+a:visited{
+    color:blue;
+
+}
+
+a:hover{
+    background-color: yellow;
+
+}
+
+
+a>img:hover{
+    transform: scale(1.2);
+    box-shadow: 10px 5px 5px yellowgreen;
+}
+
+.presentation,.Name,.role,.footer{
+    background-color: aliceblue;
+}
+
+.buttons{
+    background-color: aquamarine;
+}
+.header{
+    background-color: darkorange;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+
+}
+.buttons>*{
+    text-align: center;
+    flex:1;
+}
+
+.Image,.poster{
+    display: flex;
+    justify-content: center;
+}
+
+.presentation,.information{
+    flex:1;
+}
+
+
+
+
+
+@media screen and (min-width: 500px) {
+    .Image,.poster{
+        display: block;
+    }
+    .Actor,.presentation{
+        flex-direction: row;
+    }
+}
+@media screen and (min-width: 1000px){
+    body{
+        width: 1000px;
+    }
+    html{
+        display: flex;
+        justify-content: center;
+    }
+}
+

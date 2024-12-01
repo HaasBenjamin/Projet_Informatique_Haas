@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Météo de la ville de {{ city }}!{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset("js/weatherRequest.js")}}"></script>
+    <script src="{{ asset("js/addressRequest.js")}}"></script>
+{% endblock %}
+{% block body %}
+    <h1 class="m-2">Météo actuelle de la ville de {{ city }} pour {% if page == 1 %} aujourd'hui{% elseif page == 2 %} demain{% else %}dans {{ page }} jours{% endif %} <a href="{{ path("app_user_profile") }}" class="btn btn-light m-2">Page de profil</a></h1>
+    <span class="navigability m-2">Journée de la semaine</span>
+    <div class="btn-toolbar m-2" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" >
+            {% for i in 1..7 %}
+                <a href="{{ path("app_weather",{id:addressId,page:i}) }}" class="btn btn-secondary {% if i == page %}active{% endif %}">{{ i }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="navCity">
+        <nav aria-label="Page navigation weather">
+            <span class="navigability m-2">Naviguer entre vos villes</span>
+            <ul class="pagination m-2">
+                <li class="page-item">
+                    <a class="page-link" href="http://localhost:8000/user/weather/{{ addresses[0].id }}/1" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% for i in 0..addresses|length-1 %}
+                    <li class="page-item {% if addresses[i].city == city %}active{% endif %}"><a class="page-link" href="{{ path("app_weather",{"id":addresses[i].id,"page":1}) }}">{{ addresses[i].city }}</a></li>
+                {% endfor %}
+                <li class="page-item">
+                    <a class="page-link" href="http://localhost:8000/user/weather/{{ addresses[addresses |length -1].id }}/1" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="WeatherData"><div class="accordion" id="accordionWeather"> </div></div>
+    <script>
+        getCoordinateForCity("{{ city }}","{{ postalCode }}").then((coordinates)=>{
+                PrintWeatherInformation(coordinates.latitude,coordinates.longitude,{{ page }})
+        }).catch(()=>{})
+
+
+    </script>
+{% endblock %}

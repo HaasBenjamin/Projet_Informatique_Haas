@@ -1,0 +1,97 @@
+html{
+    height:100%;
+
+}
+.header{
+    display: flex;
+    justify-content: center;
+}
+h1{
+
+    color: greenyellow;
+}
+body{
+    height: 90%;
+    flex-direction:column ;
+    display: flex;
+    background-image: url("../img/background.png");
+    background-size: cover;
+
+
+
+
+}
+
+
+.content {
+    display: flex;
+    flex-flow: row wrap;
+    overflow-y: auto;
+    justify-content: space-evenly;
+}
+.movie{
+    display: flex;
+    flex-direction: column;
+
+
+
+}
+
+.movie_image{
+    display: flex;
+    flex-direction: column;
+    max-width: 240px;
+    transition:0.5s ;
+}
+
+
+img{border-radius: 75px 0px 106px 10px;
+    transition:0.5s ;}
+
+img:hover{
+    transform: scale(1.2);
+    box-shadow: 10px 5px 5px 5px rgba(214,162,30,1);
+
+}
+a{  text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+
+}
+a:link{
+    text-decoration: none;
+    color: darkblue;
+    font-family:cursive;
+    font-size: large;
+}
+
+.tiltle_movie{
+    display: flex;
+
+
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    color: greenyellow;
+    text-align: center;
+    font-size: x-large;
+}
+
+
+
+.add{
+    color: greenyellow;
+}
+
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.buttons>*{
+    margin: 15px;
+}

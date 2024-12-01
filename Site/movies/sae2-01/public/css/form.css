@@ -1,0 +1,38 @@
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+html{
+    background-image: url("../img/clap.jpg");
+    background-size: cover;
+}
+
+form{
+    margin: 15px;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+h1,.accueil,label{
+    color:white;
+}
+
+.accueil:visited{
+    color: chartreuse;
+}
+
+input:required{
+    border:1px dashed red;
+}
+
+input:optional{
+    border:1px dashed green;
+}
+
+button{
+    width: max-content;
+}

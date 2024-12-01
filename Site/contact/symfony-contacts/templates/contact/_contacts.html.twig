@@ -1,0 +1,19 @@
+<ul class="contacts">
+    {% for contact in contacts %}
+        <li>
+                {% if is_granted("ROLE_ADMIN") %}
+                <a href="{{ path('app_contact_update', {id: contact.id}) }}"><span class="material-symbols-outlined text-warning">edit</span></a
+                ><a href="{{ path('app_contact_delete', {id: contact.id}) }}"> <span class="material-symbols-outlined text-danger">delete</span></a
+                >
+                {% endif %}
+                <a class="contact" href="{{ path('app_contact_show', {id: contact.id}) }}"
+                ><span class="lastname"
+                        >{{ contact.lastname }}</span>, <span class="firstname"
+                        >{{ contact.firstname }}</span></a>
+                        {% if  show_category??true and contact.category  %}
+                                <span class="badge bg-secondary"
+                                ><a class="nav-link" href="{{ path('app_category_show', {id: contact.category.id}) }}">{{ contact.category.name }}</a></span>
+                        {% endif %}</li>
+
+    {% endfor %}
+</ul>

@@ -1,0 +1,12 @@
+﻿@using (Html.BeginForm("MonFormulairePoste", "Home", FormMethod.Post))
+{
+    @Html.TextBox("NomPays", "");
+    @Html.Hidden("testLabel","test")
+    <br />
+    <button type="submit">Envoyer</button>
+    <div>@Html.ActionLink($"Retour à la page d'accueil", "Index", "Home")</div>
+}
+
+@{
+    Layout = "~/Views/Shared/MonModeleDePage.cshtml";
+}

@@ -1,0 +1,87 @@
+[
+    {
+        "name": "felidés",
+        "description": "Mammifères carnivores digitigrades, à griffes acérées et canines puissantes"
+    },
+    {
+        "name": "canidés",
+        "description": "Mammifères carnivores digitigrades, au museau allongé, aux pattes hautes"
+    },
+    {
+        "name": "bovidés",
+        "description": "Mammifères ongulés ruminants"
+    },
+    {
+        "name": "cervidés",
+        "description": "Mammifères ongulés dont les mâles portent des bois "
+    },
+    {
+        "name": "ursidés",
+        "description": "Mammifères carnivores et plantigrades"
+    },
+    {
+        "name": "cercopithecidé",
+        "description": "Famille de primates catarhiniens à queue non-préhensile de l'Ancien Monde"
+    },
+    {
+        "name": "cebidés",
+        "description": "Famille de singes du Nouveau Monde"
+    },
+    {
+        "name": "hominidés",
+        "description": "Famille de grand primate hominoïde"
+    },
+    {
+        "name": "cuculidés",
+        "description": "Oiseaux possédant des pattes peu préhensiles et un bec immobile et peu crochu "
+    },
+    {
+        "name": "serpents",
+        "description": "Appartenant à l'ordre des squamates, ils possèdent un corps allongé, dépourvus de membre et un sang froid "
+    },
+    {
+        "name": "rana",
+        "description": "Excellents sauteurs ayant une coloration du brun au vert"
+    },
+    {
+        "name": "giraffidés",
+        "description": "Famille de mammifères artiodactyles ruminants"
+    },
+    {
+        "name": "Rhinocerotidés",
+        "description": "Famille de mammifères ongulés périssodactyles"
+    },
+    {
+        "name": "Hippopotamidés",
+        "description": "Mammifères cétartiodactyles aux morsures puissantes"
+    },
+    {
+        "name": "Accipitridés",
+        "description": "Famille rassemblant la majorité des vautours diurnes "
+    },
+    {
+        "name": "Strigidés",
+        "description": "Famille de rapace à activité nocturne ayant les femelles plus grandes que les mâles"
+    },
+    {
+        "name": "Elephantidés",
+        "description": "Géants aux défense d'ivoire et seuls survivants de l'ordre des proboscidiens"
+    },
+    {
+        "name": "Lemuridés",
+        "description": "Famille de lémurs ou makis présentant un museau allongé et de gros yeux"
+    },
+    {
+        "name": "Cathartidés",
+        "description": "Oiseaux de proie diurnes à la tête nue et au bec puissant et crochu"
+    },
+    {
+        "name": "Crocodylidés",
+        "description": "Famille de reptiles archosauriens à la silhouette caractéristique"
+    },
+    {
+        "name": "Iguanidés",
+        "description": "Reptiles semi-arboricoles principalement diurnes"
+    }
+
+]

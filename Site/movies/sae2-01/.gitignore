@@ -1,0 +1,7 @@
+/vendor/
+/.idea/
+.mypdo.ini
+.php-cs-fixer.cache
+tests/movie_lite.sqlite
+tests/movie_lite.sqlite_snapshot
+.mypdo.test.ini

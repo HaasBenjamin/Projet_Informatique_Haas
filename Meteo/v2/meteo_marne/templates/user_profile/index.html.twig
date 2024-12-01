@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de profil!{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset("js/weatherRequest.js")}}"></script>
+    <script src="{{ asset("js/addressRequest.js")}}"></script>
+{% endblock %}
+{% block body %}
+    <h1 class="m-2">Bonjour {{ app.user.lastname |capitalize }} {{ app.user.firstname|capitalize }}
+        <div>
+            <a href="{{ path("app_home") }}" class="btn btn-light m-2">Page d'accueil</a>
+            <a class="btn btn-danger m-2" href="{{ logout_path() }}" >Déconnexion {{ app.user.firstname }}</a>
+        </div>
+    </h1>
+    <h2 class="m-2">Votre sélection d'adresse </h2>
+    <a href="{{ path("app_address_create") }}" class="btn btn-success m-3 add">Ajouter une adresse</a>
+    <div class="address">
+    {% set meter = 0 %}
+    {% for address in addresses %}
+        <div class="w-25 m-2">
+        <div class="card" >
+            <span class="imgCard{{ meter }}">
+            <img class="card-img-top"  src="{{ asset("img/village.jpg") }}" alt="Card image cap" height="70%">
+            </span>
+            {% set meter = meter +1  %}
+            <div class="card-body">
+                <h5 class="card-title pb-2 border-bottom border-secondary">{{ address.city }}</h5>
+                <p class="card-text">{{ address.addressSupplement }}</p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="{{ path("app_weather",{'id':address.id,'page':1}) }}" class="btn btn-primary" style="width:80%">Voir les prévisions</a>
+                    <a href="{{ path("app_address_delete",{'id':address.id}) }}" style="width:10%"><span class="material-symbols-outlined text-danger">delete</span></a>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+    <script>
+        {% set meter = 0 %}
+        {% for address in addresses %}
+            getCoordinateForCity("{{ address.city }}","{{ address.postalCode }}").then((coordinates)=>{
+                ChangePictureDependingOnWeather(coordinates.latitude,coordinates.longitude,{{ meter }})
+                {% set meter = meter +1 %}
+                    .catch(error => {
+                        dataWeather = ['Erreur'];
+                        console.error(`Erreur lors de la requête de récupération des données : ${error}`);
+                    });
+            })
+
+        {% endfor %}
+
+    </script>
+{% endblock %}

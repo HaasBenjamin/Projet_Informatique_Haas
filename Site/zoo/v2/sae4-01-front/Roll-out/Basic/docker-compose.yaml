@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+
+  front:
+    build:
+      context: ./sae4-01-front
+      args:
+        REACT_APP_API_ENTRYPOINT: ${REACT_APP_API_ENTRYPOINT:?Variable REACT_APP_API_ENTRYPOINT not set, please define it in your .env file}
+    ports:
+      - 8085:80
+    restart: always
+    networks:
+      - production
+
+  db:
+    image: mariadb:10.2.25
+    environment:
+      - MYSQL_USER=${MYSQL_USER:?error}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:?error}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:?error}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:?error}
+    ports:
+      -  3306:3306
+    restart: always
+    networks:
+      - production
+    volumes:
+      - ./mariaDB_prod:/var/lib/mysql:Z
+  php:
+    build:
+      context: ./sae4-01-api
+      target: zootechpark_php_prod
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - APP_DEBUG=${APP_DEBUG:-0}
+      - APP_ENV=${APP_ENV:-prod}
+      - TRUSTED_PROXIES=${TRUSTED_PROXIES:-10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+      - APP_SECRET=${APP_SECRET:?error}
+      - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN:?error}
+      - DATABASE_URL=${DATABASE_URL:?error}
+      - TRUSTED_HOSTS=${TRUSTED_HOSTS:?error}
+    networks:
+      - production
+
+  web-back:
+    build:
+      context: ./sae4-01-api
+      target: zootechpark_nginx_prod
+    restart: always
+    depends_on:
+      - php
+    ports:
+      - 8080:80
+    networks:
+      - production
+
+networks:
+  production:

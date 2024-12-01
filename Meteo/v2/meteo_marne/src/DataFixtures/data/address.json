@@ -1,0 +1,22 @@
+[
+  {
+    "city": "Châlons-en-Champagne",
+    "postalCode": "51000",
+    "addressSupplement" : "2 bis rue de Jessaint"
+  },
+  {
+    "city": "Reims",
+    "postalCode": "51100",
+    "addressSupplement" : "Chem. des Rouliers"
+  },
+  {
+    "city": "Rogny",
+    "postalCode": "02140",
+    "addressSupplement" : "10 rue de la Brune"
+  },
+  {
+    "city": "Reims",
+    "postalCode": "51100",
+    "addressSupplement" : "21 bis rue Henri Farman"
+  }
+]

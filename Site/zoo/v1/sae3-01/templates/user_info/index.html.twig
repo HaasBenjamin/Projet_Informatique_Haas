@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenements auxquels vous êtes inscrits{% endblock %}
+
+{% block body %}
+    <h1 class="subsectionTitle">Bonjour, {{ app.user.firstname }}</h1>
+    <h3>Voici la liste des événements auxquels vous êtes incrits :</h3>
+    <div class="container d-flex flex-wrap justify-content-center">
+    {% for registration in registrations %}
+    <div class="card border-dark m-3" style="max-width: 18rem;">
+        <div class="card-header">Événement : {{ registration.event.name }}</div>
+        <div class="card-body text-dark">
+            <h5 class="card-title">Description de l'événement</h5>
+            <p class="card-text">{{ registration.event.description }}</p>
+            <h5 class="card-title">Vous devez vous désinscrire d'un événement ?</h5>
+            <a class="btn btn-primary w-100" href="{{ path('app_event_deleteregistrations',{id:registration.id}) }}">Demander un remboursement</a>
+            <h5 class="card-title  mt-3">Vous souhaitez modifier votre réservation ?</h5>
+            <a class="btn btn-success w-100" href="{{ path('app_event_inscriptionupdate', {id:registration.id}) }}">Modifier mon inscription</a>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}

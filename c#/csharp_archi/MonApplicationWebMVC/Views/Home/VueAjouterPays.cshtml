@@ -1,0 +1,102 @@
+﻿@model Pays
+<h1>Ajouter un pays</h1>
+@{
+    Layout = "~/Views/Shared/MonModeleDePage.cshtml";
+}
+@using(Html.BeginForm("AjouterPaysPost","Home",FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    <button type="button" id="affichage">Cacher les informations secondaires</button>
+    <div>
+    @Html.LabelFor(m => m.nom)
+    @Html.TextBoxFor(m => m.nom)
+    </div>
+    <div>
+    @Html.LabelFor(m => m.continent)
+    @Html.DropDownListFor(m => m.continent, new SelectList(Enum.GetValues(typeof(Continent))),"Choississez un continent")
+    </div>
+    <div id="pop">
+    @Html.LabelFor(m => m.population)
+    @Html.TextBoxFor(m => m.population)
+    </div>
+    <div id="superficie">
+    @Html.LabelFor(m => m.superficie)
+    @Html.TextBoxFor(m => m.superficie)
+    </div>
+    <div>
+    @Html.LabelFor(m => m.superficie)
+    @Html.TextBoxFor(m => m.superficie)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.devise)
+        @Html.TextBoxFor(m => m.devise)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.txConvertion)
+        @Html.TextBoxFor(m => m.txConvertion)
+    </div>
+    <div>
+        <input type="file" name="ImportDrapeau"  />
+    </div>
+    
+
+    <br />
+    <button type="submit">Valider</button>
+
+}
+<div>
+    Montant devise locale: 
+    <select required id="devise">
+        <option>Dollar</option>
+        <option>Dinar algérien</option>
+        <option>Dollar australien</option>
+        <option>Real</option>
+        <option>Renminbi</option>
+        <option>Metical</option>
+    </select>
+    <input type="text" id="tbMontantEnDevise" />
+    <button onclick="return ConversionDeviseToEuro_CoteServeur();">Convertir</button>
+    Résultat : 
+    <input type="text" id="tbMontantEnEuro" disabled />
+</div>
+
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+            $('#affichage').click(function(){
+            var cont = $('#affichage').text();
+            if (cont == 'Cacher les informations secondaires'){
+                $('#affichage').text("Afficher les informations secondaires");
+                $('#pop').hide();
+                $('#superficie').hide();
+            }
+            else{
+                $('#affichage').text("Cacher les informations secondaires");
+                $('#pop').show();
+                $('#superficie').show();
+            }
+            });
+        });
+        function ConversionDeviseToEuro_CoteServeur()
+        {
+            var devise = $("#devise").val();
+            var montantEnDollar = $("#tbMontantEnDevise").val();
+            var param = { MontantEnDevise: montantEnDollar, devise };
+            $.ajax({
+                url: '@Url.Action("_AjaxConversionDeviseToEuro", "Home")',
+                type: "POST",
+                cache: false, 
+                data: param,
+                success: function (result) {
+                    $("#tbMontantEnEuro").val(result);
+                }
+            })
+            return false;
+        }
+    </script>
+}
+
+
+
+
+
+

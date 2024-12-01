@@ -1,0 +1,82 @@
+[
+    {
+        "name": "ours brun",
+        "description": "Animal solitaire et omnivore qui vivait dans les forêts d'Eurasie et d'Amérique du Nord,disparu en Europe"
+    },
+    {
+        "name": "ours polaire",
+        "description": "Grand mammifère omnivore originaire de l'Arctique"
+    },
+    {
+        "name": "gorille",
+        "description": "Grand singe anthropoïde d'Afrique"
+    },
+    {
+        "name": "chimpanzé",
+        "description": "Genre de Simiformes"
+    },
+    {
+        "name": "panda",
+        "description": "De fourrure noire et blanche, le panda est un carnivore végétarien"
+    },
+    {
+        "name": "tigre",
+        "description": "Grand félin sauvage reconnaissable à sa fourrure rousse rayée de noir"
+    },
+    {
+        "name": "lion",
+        "description": "Grand mammifère carnivore, à pelage fauve et à crinière"
+    },
+    {
+        "name":"panthère noir",
+        "description": "Grand mammifère carnassier d'Afrique et d'Asie, au pelage noir"
+    },
+    {
+        "name": "girafe",
+        "description": "Grand mammifère d'Afrique, à cou très long et rigide, dont le pelage roux présente des dessins polygonaux."
+    },
+    {
+        "name": "rhinocéros",
+        "description": "Mammifère de grande taille, à la peau épaisse et rugueuse, qui porte une ou deux cornes sur le nez."
+    },
+    {
+        "name": "hippopotames",
+        "description": "Gros mammifère herbivore amphibie, aux membres trapus"
+    },
+    {
+        "name": "aigle",
+        "description": "Grand oiseau de proie diurne, au bec crochu et aux serres puissantes"
+    },
+    {
+        "name": "antilope",
+        "description": "Mammifère ruminant d'Afrique et d'Asie, au corps svelte, aux hautes pattes grêles, à cornes en spirale"
+    },
+    {
+        "name": "chouette",
+        "description": "Oiseau rapace nocturne"
+    },
+    {
+        "name": "éléphant",
+        "description": "Très grand mammifère herbivore, à corps massif, à peau rugueuse, à grandes oreilles plates, au nez allongé en trompe et à défenses d'ivoire"
+    },
+    {
+        "name": "lémur",
+        "description": "Aussi appelé makis, est exclusivement malgaches"
+    },
+    {
+        "name": "loup",
+        "description": "Mammifère carnivore sauvage, ressemblant à un grand chien"
+    },
+    {
+        "name": "vautour",
+        "description": "Oiseau rapace de grande taille, au bec crochu, à la tête et au cou dénudés"
+    },
+    {
+        "name": "crocodile",
+        "description": "Grand reptile à fortes mâchoires, à quatre courtes pattes, qui vit dans les fleuves des régions chaudes"
+    },
+    {
+        "name": "iguane",
+        "description": "Reptile saurien de l'Amérique tropicale, qui a l'aspect d'un grand lézard"
+    }
+]

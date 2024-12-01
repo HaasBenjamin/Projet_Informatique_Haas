@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block route %} {% if family %}{{ path('app_species',{idFamily : idFamily })}}
+{% else %} {{ path('app_species_showAll') }} {% endif %}{% endblock %}
+{% block title %}Liste des espèces {% if family %} appartenant à la famille {{ name }} {% endif %} {% endblock %}
+{% block body %}
+    <h1 class="subsectionTitle text-center">Liste des espèces {% if family %} appartenant à la famille {{ name }} {% endif %}</h1>
+    <hr>
+    <ul class="p-0" style="list-style-type: none">
+        {% for singleSpecies in species %}
+            {% if family %}
+                {% for esp in singleSpecies.species %}
+                    {% set image = esp.image.image|default(asset('img/default.png')) %}
+                    <li class="border-end border-bottom mb-3"><a class="nav-link" href="{{ path('app_animals', {'idSpecies': esp.id}) }}">
+                            <div class="w-100 d-flex flex-column" >
+                                <span id="name">{{ esp.name |capitalize }}</span>
+                                <span>{{ esp.description |capitalize}}</span>
+                            </div>
+                                <div>
+                                    <img src="{{ image }}" alt="Image inconnue" width="256" height="256">
+                                </div>
+                            <div class="d-flex flex-column">
+                                <span>{{ esp.diet.name |capitalize }}</span>
+                                <span>{{ esp.animals |length }} individus dans l'espèce</span>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                {% set image = singleSpecies.image.image|default(asset('img/default.png')) %}
+                <li class="border-end border-bottom mb-3"><a class="nav-link" href="{{ path('app_animals', {'idSpecies': singleSpecies.id}) }}">
+                        <div class="d-flex flex-column w-100">
+                            <span id="name">{{ singleSpecies.name |capitalize }}</span>
+                            <span>{{ singleSpecies.description |capitalize}}</span>
+                        </div>
+                            <div>
+                                <img src="{{ image }}" alt="Image inconnue" width="256" height="256">
+                            </div>
+                        <div class="d-flex flex-column">
+                            <span>{{ singleSpecies.diet.name |capitalize }}</span>
+                            <span>{{ singleSpecies.animals | length }} individus dans l'espèce</span>
+                        </div>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+﻿@using MonApplicationWebMVC.Models
+@model Pays
+<li class="@Model.nom">
+    <dl>
+    <dt>Pays</dt>
+        <dd>@Model.nom</dd>
+
+    <dt>Drapeau</dt>
+        <dd><img src="/Content/@Model.drapeau" alt="drapeau" width="600" height="400" /></dd>
+
+    <dt>Continent</dt>
+        <dd>@Model.continent</dd>
+
+    <dt>Population</dt>
+        <dd>@Model.population</dd>
+        
+    <dt>Superficie</dt>
+        <dd>@Model.superficie</dd>
+
+    <dt>Devise</dt>
+        <dd id="devise" + @Model.nom>@Model.devise</dd>
+
+    <dt>Taux de convertion</dt>
+        <dd id="txConv_@Model.nom" >@Model.txConvertion</dd>
+    </dl>
+    <input type="text" id="tbMontantEnDevise_@Model.nom" />
+    <button onclick="return ConversionDeviseToEuro_CoteServeur('@Model.nom');">Convertir</button>
+    Résultat :
+    <input type="text" id="tbMontantEnEuro_@Model.nom" disabled />
+
+    <div class="tdicon">
+        <button class="btn btn-default btn-xs" onclick="return SupprimerPays('@Model.Id', '@Model.nom');">
+        <img src="/Content/poubelle.jpg" alt="Supprimer ce pays" width="50" height="50" />
+        </button>
+    </div>
+    <div>@Html.ActionLink("Modifier ce pays", "ModifierPays", "Home", new { id = Model.Id },null)</div>
+</li>
+
+
+
+
+
+
+
+

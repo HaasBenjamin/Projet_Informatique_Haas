@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression de l'adresse {{ address.addressSupplement }}, {{ address.postalCode }} {{ address.city }}{% endblock %}
+{% block stylesheets %}
+    <style>
+        body {
+            background-image: url("{{ asset("img/door.png") }}");
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <h1>Suppression de l'adresse {{ address.addressSupplement }}, {{ address.postalCode }} {{ address.city }}</h1>
+    {{ form_start(form, {'attr': {'class': 'd-flex'}}) }}
+    {{ form_row(form.delete, { 'label': "Supprimer l'adresse" ,'attr': {'class': 'btn btn-danger'}}) }}
+    {{ form_row(form.cancel, { 'label': 'Annuler la suppression', 'attr': {'class': 'btn btn-secondary'}}) }}
+    {{ form_end(form) }}
+{% endblock %}

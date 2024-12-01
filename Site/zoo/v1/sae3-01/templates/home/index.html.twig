@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <video autoplay muted loop id="myVideo">
+        <source src="{{ asset('img/videobackground.mp4') }}" type="video/mp4">
+    </video>
+    <h1 class="mainTitle">Bienvenue chez ZooTech Park</h1>
+    <hr>
+    <h2>Vous souhaitez chercher un animal parmis notre zoo ?</h2>
+    <form class="d-flex" role="search" action="{{ path('app_animals_showall') }}">
+        <input class="form-control me-2" type="search" placeholder="Rechercher un animal" aria-label="Search" name="search" value="{{ search |default('') }}">
+        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+    </form>
+{% endblock %}

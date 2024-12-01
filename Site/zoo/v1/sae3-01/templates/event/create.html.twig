@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% set title = "Création du'un nouveau évènement" %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="subsectionTitle">{{ title }}</h1>
+    {{ include('event/_form.html.twig',{form: form ,submit_label : 'Créer'},with_context = false) }}
+{% endblock %}
+
+
+

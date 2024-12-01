@@ -1,0 +1,8 @@
+
+{{ form_start(form) }}
+<h1> Événement : {{ event.name }} </h1>
+<h1> Utilisateur : {{ app.user.lastname }} </h1>
+    {{ form_row(form.date, {'label': 'Choisir une date'}) }}
+    {{ form_row(form.nbReservedPlaces, {'label': 'Nombre de places'}) }}
+<button type="submit" class="btn btn-primary w-100">{{ submit_label }}</button>
+{{ form_end(form) }}

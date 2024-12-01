@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Météo de la ville de Reims!{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset("js/weatherRequest.js")}}"></script>
+{% endblock %}
+{% block body %}
+    <h1 class="m-2">Météo actuelle de la ville de Reims<span class="user"
+        >{% if is_granted("IS_AUTHENTICATED_FULLY") %}
+        <a href="{{ path("app_user_profile") }}" class="btn btn-light m-2">Page de profil</a>
+        <a class="btn btn-danger m-2" href="{{ logout_path() }}" >Déconnexion {{ app.user.firstname }}</a>
+        {% else %}
+            <a class="btn btn-primary m-2" role="button" href="{{ path("app_login") }}">Connexion</a>
+        {% endif%}
+        </span></h1>
+    <div class="WeatherData"><h1 class="m-2">Données actuelles</h1></div>
+    <script>
+        PrintCurrentWeatherInformation({{ latitude }},{{ longitude }})
+            .catch(error => {
+                console.error(`Erreur lors de la requête de récupération des données : ${error}`);
+            });
+    </script>
+
+{% endblock %}

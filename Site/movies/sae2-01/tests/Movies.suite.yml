@@ -1,0 +1,6 @@
+actor: MoviesTester
+modules:
+    enabled:
+        - \Tests\Helper\Movies
+        - Asserts
+        - Db:

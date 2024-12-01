@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'une inscription{% endblock %}
+
+{% block body %}
+    <h1 class="subsectionTitle">Modification d'une inscription</h1>
+    {{ include('inscription/_form.html.twig', {'submit_label' : "Modifier l'inscription"}) }}
+    {% if not registration_done %}
+        <div class="alert alert-danger" role="alert">
+            L'inscription ne peut pas être faite pas de bol... Il reste {{ registerLeft }}
+        </div>
+    {% endif %}
+{% endblock %}

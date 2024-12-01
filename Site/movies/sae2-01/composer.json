@@ -1,0 +1,65 @@
+{
+    "name": "beben/sae2-01",
+    "description": "Développement d'une application web film sae",
+    "type": "project",
+    "license": "Copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+
+    },
+    "autoload-dev": {
+
+        "psr-4": {
+            "Tests\\":"tests/"
+        }
+    },
+
+
+    "authors": [
+        {
+            "name": "Benjamin Haas",
+            "email": "benjamin.haas@etudiant.univ-reims.fr"
+
+        }
+    ],
+    "require": {
+        "ext-pdo": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.17",
+        "codeception/codeception": "~4.1",
+        "codeception/module-phpbrowser": "~1",
+        "codeception/module-asserts": "~1",
+        "codeception/module-db": "~1"
+    },
+    "scripts": {
+        "start:linux": [
+            "Composer\\Config::disableProcessTimeout",
+            "bin/run-server.sh"
+        ],
+        "test:cs": [
+            "php vendor/bin/php-cs-fixer fix --dry-run "
+        ],
+        "fix:cs": [
+            "php vendor/bin/php-cs-fixer fix"
+        ],
+        "start:win": [
+            "Composer\\Config::disableProcessTimeout",
+            "bin/run-server.bat"
+        ],
+
+        "test:Livrable2": [
+            "php vendor/bin/codecept run Livrable2"
+        ],
+
+
+        "test:Movie": [
+            "php vendor/bin/codecept run Movies"
+        ],
+
+        "start": "@start:linux"
+        }
+
+    }

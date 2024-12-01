@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}
+    Édition de {{ animal.name }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-2 subsectionTitle">Édition de {{ animal.name }} </h1>
+    {% if animal.image != null %}
+        <div class="text-center mt-3">
+            <img class="text-center w-50" src="{{ animal.image.image }}">
+        </div>
+    {% endif %}
+    {% if animal.image == null %}
+        <div class="text-center">
+            <img class="text-center w-50" src="{{ asset('img/default.png') }}">
+        </div>
+    {% endif %}
+    {{ include('animal/_form.html.twig', {submit_label: 'Modifier  ', form:form}, with_context = false ) }}
+{% endblock %}
+
+
+

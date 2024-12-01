@@ -1,0 +1,84 @@
+body{
+    background-image: url("../img/weather.jpg");
+    background-size:cover;
+    margin: 0;
+    background-attachment: fixed;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+a{
+    color: black;
+}
+
+.navigability{
+    color: white;
+}
+h1 {
+    color: yellow;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-secondary{
+    background-color: white;
+    color: black;
+}
+.btn-secondary.active{
+    background-color: #0D6EFD;
+}
+
+.user{
+    display: flex;
+    justify-items: right;
+}
+h2 {
+    color: white;
+}
+.address{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.add {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.info-bulle {
+    position: relative;
+    display: inline-block;
+}
+
+.info-bulle .texte-info {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.info-bulle:hover .texte-info {
+    visibility: visible;
+    opacity: 1;
+}
+
+.card-text,.card-title{
+    overflow: hidden;
+}
+
+

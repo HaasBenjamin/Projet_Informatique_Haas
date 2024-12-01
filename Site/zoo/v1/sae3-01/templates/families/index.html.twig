@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block route %} {% if category %}{{ path('app_families',{idCategory : idCategory })}}
+{% else %} {{ path('app_families_showAll') }} {% endif %}{% endblock %}
+{% block title %}Liste des familles {% if category %}appartenant à la catégorie {{ name }} {% endif %} {% endblock %}
+{% block body %}
+    <h1 class="subsectionTitle text-center">Liste des familles {% if category %}appartenant à la catégorie {{ name }} {% endif %}</h1>
+    <hr>
+    <ul class="container d-flex flex-wrap justify-content-center">
+        {% for family in families %}
+            {% if category %}
+                {% for fam in family.AnimalFamilies %}
+                    {% set image = fam.image.image|default(asset('/img/default.png')) %}
+                    <li class="card left-card m-3" style="width: 80vh;">
+                        <img class="card-img-top" src="{{ image }}" alt="Image inconnue" width="256" height="256">
+                        <div class="card-body">
+                            <h5 class="card-title">La famille des {{ fam.name }}.(s)</h5>
+                            <p class="card-text">
+                                {{ fam.description }}
+                            </p>
+                            <a class="btn btn-primary" href="{{ path('app_species_index', {'idFamily': fam.id}) }}">Afficher les espèces de la famille</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                {% set image = family.image.image|default(asset('/img/default.png')) %}
+                <li class="card left-card m-3" style="width: 80vh;">
+                    <img class="card-img-top" src="{{ image }}" alt="Image inconnue" width="256" height="256">
+                    <div class="card-body">
+                        <h5 class="card-title">La famille des {{ family.name }}.(s)</h5>
+                        <p class="card-text">
+                            {{ family.description }}
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('app_species_index', {'idFamily': family.id}) }}">Voir les espèces appartenant à cette famille</a>
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% endblock %}
