@@ -86,5 +86,21 @@ namespace CastleModel
                 carte.Visible = false;
             }
         }
+
+        public Deck(Deck d, params Heap[] he) 
+        {
+            this.Name = d.Name;
+            this.Number = d.Number;
+            this.cards = new List<Card>();
+            foreach (Card carte in d.cards)
+            {
+                this.cards.Add(new Card(carte));
+            }
+            this.heaps = new List<Heap>();
+            foreach (Heap heap in he)
+            {
+                this.heaps.Add(heap);
+            }
+        }
     }
 }

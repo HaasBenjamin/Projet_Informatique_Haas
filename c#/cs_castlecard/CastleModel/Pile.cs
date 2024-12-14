@@ -140,6 +140,22 @@ namespace CastleModel
                 comp=comp + 2;
             }
         }
+
+        public Pile(Pile p)
+        {
+            this.Name = p.Name;
+            this.Number = p.Number;
+            this.cards = new List<Card>();
+            foreach(Card carte in p.cards)
+            {
+                this.cards.Add(new Card(carte));
+            }
+        }
+
+        public Pile()
+        {
+            this.Number  = 0;
+        }
         #endregion
     }
 }

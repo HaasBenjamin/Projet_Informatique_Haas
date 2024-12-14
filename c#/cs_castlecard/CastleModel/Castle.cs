@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System.Collections;
 
 namespace CastleModel
 {
@@ -17,6 +18,37 @@ namespace CastleModel
         private List<Deck> deck;
         private Stack<Move> moves = new Stack<Move>();
 
+
+        public Castle(Castle castle)
+        {
+            this.heaps = new List<Heap>();
+            Heap[] heapsdeck = new Heap[castle.Heaps.Count];
+            Heap heaptmp;
+            int i = 0;
+            foreach (Heap heap in castle.Heaps)
+            {
+                heaptmp = new Heap(heap);
+                this.heaps.Add(heaptmp);
+                heapsdeck[i] = heaptmp;
+                i++;
+            }
+            this.baseHeaps = new List<BaseHeap>();
+            foreach (BaseHeap baseh in castle.BaseHeaps)
+            {
+                this.baseHeaps.Add(new BaseHeap(baseh));
+            }
+            this.columns = new List<Column>();
+            foreach (Column col in castle.Column)
+            {
+                this.columns.Add(new Column(col));
+            }
+            this.deck = new List<Deck>();
+            foreach (Deck dec in castle.Deck)
+            {
+                this.deck.Add(new Deck(dec,heapsdeck));
+            }
+
+        }
         public List<Heap> Heaps
         {
             get { return heaps; }
@@ -173,13 +205,14 @@ namespace CastleModel
 
         public int? GetColumnFor(Card carte , bool allowEmptyColumn)
         {
+            int colnull = -1;
             foreach (Column column in Column)
             {
                 if (column.Empty)
                 {
-                    if (allowEmptyColumn)
+                    if (colnull == -1)
                     {
-                        return column.Number;
+                        colnull = column.Number;
                     }
                 }
                 else
@@ -190,6 +223,11 @@ namespace CastleModel
                     }
                 }
             }
+            if (allowEmptyColumn)
+            {
+                return colnull;
+            }
+            
             return null;
         }
 
@@ -588,6 +626,20 @@ namespace CastleModel
                 jeu.RemoveAt(ind);
             }
 
+        }
+
+        public void Afficher(Move? move = null)
+        {
+            Console.WriteLine("--------------------------------------------------------------------------");
+            if (move != null )
+            {
+                Console.WriteLine($"Move : {move.From.ToString()} - {move.To.ToString()}");
+            }
+            foreach (Column col in columns)
+            {
+                col.Afficher();
+
+            }
         }
     }
 

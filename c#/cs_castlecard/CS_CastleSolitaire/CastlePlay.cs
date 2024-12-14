@@ -1,4 +1,5 @@
 ﻿using CastleModel;
+using Solver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,6 +121,13 @@ namespace ConsoleCastle
                             Console.WriteLine("Chargement effectuée");
                             Console.ReadKey();
                         }
+                        else if (null != depl && (depl.StartsWith("SOLUTION")))
+                        {
+                            
+                            AStarSolver solver = new AStarSolver(castle);
+                            solver.AfficherSolution();
+                            Console.ReadKey();
+                        }
                         
                     }
 
@@ -130,5 +138,6 @@ namespace ConsoleCastle
             console.Print(castle);
             console.Refresh();
         }
+
     }
 }

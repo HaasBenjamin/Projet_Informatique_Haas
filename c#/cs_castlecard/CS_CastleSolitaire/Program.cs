@@ -1,5 +1,6 @@
 ﻿using CastleModel;
 using ConsoleCastle;
+using Solver;
 using System.Text;
 
 Console.OutputEncoding = Encoding.UTF8;

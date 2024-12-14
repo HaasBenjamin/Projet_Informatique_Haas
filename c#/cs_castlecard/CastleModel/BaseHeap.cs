@@ -93,5 +93,9 @@ namespace CastleModel
                 }
             }
         }
+
+        public BaseHeap(BaseHeap bh) : base(bh)
+        {
+        }
     }
 }

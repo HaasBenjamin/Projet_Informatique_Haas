@@ -1,4 +1,5 @@
 ﻿using CastleModel;
+using Solver;
 
 public class ConsoleCard
 {
@@ -363,7 +364,9 @@ public class ConsoleCard
         }
         Print(castle.Deck[0]  , 15, 17 + max);
         Print($"{castle.Deck[0].Name} ({castle.Deck[0].Count})", 15, 22 + max);
-
+        Print("Score : ", 0, 20 + max);
+        Print($"{AStarSolver.Evaluate(castle)}",1, 21 + max);
+       
     }
 }
 

@@ -1,0 +1,16 @@
+﻿<Window x:Class="WPF_Castle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Castle.View"
+        mc:Ignorable="d"
+        Title="Castle" Height="600" Width="900">
+    <Grid Background="{StaticResource backgroundColor}">        <local:ViewCanvas x:Name="canvasTapis" Margin="0,0,-67,0">
+            <Image Canvas.Left="10" Canvas.Top="50" Source="/Images/tour_c.png"/>
+            <Image Canvas.Left="10" Canvas.Top="220" Source="/Images/tour_c.png"/>
+            <Image Canvas.Left="710" Canvas.Top="50" Source="/Images/tour_c.png"/>
+            <Image Canvas.Left="710" Canvas.Top="220" Source="/Images/tour_c.png"/>
+        </local:ViewCanvas>
+    </Grid>
+</Window>

@@ -48,11 +48,13 @@ namespace CastleModel
 
         public override void ApplyMove(Castle castle, Move move)
         {
+  
             Pile pile = castle.GetPile(move.From);
             if (pile.Empty)
             {
                 throw new ArgumentException($"La pile source {move.From.Name}{move.From.Number} est vide !");
-            }
+            }        
+            /*
             if (move.To == null)
             {
                 Column fromcol = (Column)pile;
@@ -76,6 +78,7 @@ namespace CastleModel
 
 
             }
+            */
             if (move.To != null)
             {
 
@@ -125,6 +128,43 @@ namespace CastleModel
                 }
             }
         }
+        }
+
+        public void ApplyMoveIfPoss(Castle castle, Move move)
+        {
+            Pile pile = castle.GetPile(move.From);
+            if (pile.Empty)
+            {
+                throw new ArgumentException($"La pile source {move.From.Name}{move.From.Number} est vide !");
+            }
+            if (move.To == null)
+            {
+                Column fromcol = (Column)pile;
+                Pile dest = castle.SearchPileForCard(fromcol.First);
+                if (dest == null)
+                {
+                    dest = castle.SearchPileForCard(fromcol.Last);
+                }
+                if (dest != null)
+                {
+                    Move.Pile topile = new Move.Pile();
+                    topile.Number = dest.Number;
+                    Move.PileName pilename = Move.PileName.BASEHEAP;
+                    if (dest.Name == "C")
+                    {
+                        pilename = Move.PileName.COLUMN;
+                    }
+
+                    topile.Name = pilename;
+                }
+
+
+            }
+            else
+            {
+                throw new ArgumentException($"La pile source {move.From.Name}{move.From.Number} ne peux être déplacée !");
+            }
+            
         }
 
         public override void UndoMove(Pile? to, int cardsCount)
@@ -208,6 +248,22 @@ namespace CastleModel
                     this.cards.Add(new Card(nummax, coul, true));
                     nummax--;
                 }
+            }
+        }
+
+        public Column(Column c) : base(c)
+        {
+        }
+
+        public void Afficher()
+        {
+            if (!Empty)
+            {
+                Console.WriteLine($"Colonne allant de {First.Figure} {First.Color} à {Last.Figure} {Last.Color}");
+            }
+            else
+            {
+                Console.WriteLine("Pas de carte");
             }
         }
     }

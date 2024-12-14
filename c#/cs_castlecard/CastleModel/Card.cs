@@ -118,19 +118,27 @@ namespace CastleModel
             {
                 visibilité = "cachée";
             }
-            return this.Figure.ToString+$"La carte porte la couleur {this.Color}"+$"La carte est actuellement {visibilité}";
+            return this.Figure.ToString()+$". La carte porte la couleur {this.Color}. "+$"La carte est actuellement {visibilité}";
         }
 
         public bool CanCover(Card carte)
         {
             bool retour = false;
-            if (this.Color == carte.Color)
+            if (carte is null)
             {
-                if (this.Figure.Value +1 == carte.Figure.Value )
+                retour = true;
+            }
+            else
+            {
+                if (this.Color == carte.Color)
                 {
-                    retour = true;
+                    if (this.Figure.Value +1 == carte.Figure.Value )
+                    {
+                        retour = true;
+                    }
                 }
             }
+            
             return retour;
         }
 
@@ -206,6 +214,13 @@ namespace CastleModel
 
             return new Card(carteFace, col,true);
             
+        }
+
+        public Card(Card c)
+        {
+            this.Figure = c.Figure;
+            this.Color = c.Color;
+            this.Visible = c.Visible;
         }
     }
 }
