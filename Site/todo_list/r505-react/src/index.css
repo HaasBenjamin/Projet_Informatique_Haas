@@ -1,0 +1,85 @@
+.header {
+    /*background-color: #2b3c90;*/
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    padding-left: 15px;
+    color: white;
+    margin-bottom: 0;
+}
+
+.checklist {
+    background-color: #cc11e8;
+    border-radius: 25px;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    margin-left: 10px ;
+    margin-top: 10px ;
+    margin-bottom: 10px ;
+}
+
+.checklist_item {
+    /*color: #2b3c90;*/
+    margin: 5px;
+}
+
+.footer {
+    width: 100%;
+    /*background-color: #2b3c90;*/
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer span {
+    font-size: 25px;
+    color: white;
+}
+
+.footer > button {
+    margin: 15px;
+    /*background-color: #2b3c90;*/
+    /*border-color: #2b3c90;*/
+}
+
+.main-container {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
+.main-container button {
+    height: 40px;
+    margin: 5px;
+}
+html, body, #root, .app {
+    height: 100%;
+    margin: 0;
+}
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+}
+
+.action p {
+    margin-left: 5px;
+}
+
+.notification .MuiAlert-icon,.notification .MuiAlert-message,.notification .MuiAlert-action,.notification .MuiButtonBase-root {
+    padding: 0!important;
+    margin-bottom: 0!important;
+    margin-top: 0!important;
+    display: flex;
+    align-items: center;
+}

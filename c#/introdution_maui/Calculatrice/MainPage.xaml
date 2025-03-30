@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Calculatrice.ViewModel;assembly=Calculatrice"
+             x:Class="Calculatrice.MainPage"
+             WidthRequest="335"
+             HeightRequest="392">
+    <ContentPage.BindingContext>
+        <local:VMCalculatrice/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <local:ConvertStringToInt x:Key="StringToInt"/>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="DarkGray" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+            <Style x:Key="DigitButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="OperationButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="BackgroundColor" Value="Orange" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid BackgroundColor="Gray" RowSpacing="5" ColumnSpacing="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="Black" />
+            <Label  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="Black" TextColor="White" Text="{Binding Operations}" FontSize="23" VerticalOptions="Center" HorizontalOptions="End"/>
+            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="DarkGray" />
+            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="DarkGray" TextColor="Aqua" Text="{Binding Resultat}" FontSize="23" VerticalOptions="Center" HorizontalOptions="End"/>
+            <Button Grid.Row="2" Grid.Column="0" Text="7" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+
+            <Button Grid.Row="2" Grid.Column="1" Text="8" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="2" Grid.Column="2" Text="9" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="2" Grid.Column="3" Text="/" Style="{StaticResource OperationButtonStyle}" Command="{Binding AddOperatorCommand}" CommandParameter="/" />
+            <Button Grid.Row="3" Grid.Column="0" Text="4" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="5" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="3" Grid.Column="2" Text="6" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+
+            <Button Grid.Row="3" Grid.Column="3" Text="x" Style="{StaticResource OperationButtonStyle}" Command="{Binding AddOperatorCommand}" CommandParameter="*" />
+            <Button Grid.Row="4" Grid.Column="0" Text="1" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="4" Grid.Column="1" Text="2" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="4" Grid.Column="2" Text="3" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="4" Grid.Column="3" Text="-" Style="{StaticResource OperationButtonStyle}" Command="{Binding AddOperatorCommand}" CommandParameter="-" />
+            <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Text="0" Style="{StaticResource DigitButtonStyle}" Command="{Binding AddDigitCommand}" CommandParameter="{Binding Source={RelativeSource Mode=Self},Converter={StaticResource Key=StringToInt},Path=Text}"/>
+            <Button Grid.Row="5" Grid.Column="4" Text="+" Style="{StaticResource OperationButtonStyle}" Command="{Binding AddOperatorCommand}" CommandParameter="+"  />
+            <Button Grid.Row="6" Grid.Column="0" Text="C" Style="{StaticResource BaseStyle}" Command="{Binding ResetCommand}"/>
+            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Text="=" Style="{StaticResource OperationButtonStyle}" Command="{Binding ComputeCommand}"/>
+            
+
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Taxe.MainPage">
+
+    <ScrollView VerticalScrollBarVisibility="Always" HorizontalScrollBarVisibility="Always">
+    
+        <StackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <StackLayout Orientation="Horizontal" Spacing="6">
+                <Label 
+                    Text="Prix :" VerticalOptions="Center"/>
+
+                <Entry     
+                    Placeholder="Tapez un prix"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding PrixEntré}"
+                    Keyboard="Numeric"
+                    />
+
+            </StackLayout>
+
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Comprenant (On - T.T.C.) ou non (Off - H.T.) la taxe" VerticalTextAlignment="Center">
+                    <Label.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double" Default="350">
+                            <On Platform="Android" Value="250"/>
+                        </OnPlatform>
+                    </Label.WidthRequest>
+                </Label>
+                <Switch 
+                    IsToggled="{Binding EntréeTTC}"
+                    
+                    />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="6">
+                <Label
+                    Text="Montant de la taxe :"
+                    />
+                <Label
+                    Text="{Binding Taxe}"
+                     />
+            </HorizontalStackLayout>
+
+            
+            <HorizontalStackLayout Spacing="6">
+                <Label
+                    Text="Total :"/>
+                <Label
+                    Text="{Binding PrixAffiché}"
+                    />
+            </HorizontalStackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <HorizontalStackLayout Spacing="6">
+                    <Label 
+                        Text="Taux de la taxe (%)"/>
+                    <Label 
+                        Text="{Binding TauxTaxeAffiché}"
+                        />
+                </HorizontalStackLayout>
+                <StackLayout>
+                    <Slider 
+                        HorizontalOptions="FillAndExpand"
+                        Minimum="0"
+                        Maximum="100"
+                        Value="{Binding TauxTaxe}"
+                        
+                        />
+                </StackLayout>
+                
+
+
+                <StackLayout Orientation="Horizontal" Spacing="15" Margin="0,0,0,15">
+                    <Button
+                         HorizontalOptions="FillAndExpand"
+                         Text="15 %"
+                         x:Name="but15Pourcent"
+                         Command="{Binding SetTauxTaxe}" 
+                         CommandParameter="15"/>
+                    <Button
+                         HorizontalOptions="FillAndExpand"
+                        Text="20 %"
+                        x:Name="but20Pourcent" 
+                        Command="{Binding SetTauxTaxe}" 
+                        CommandParameter="20"/>
+
+                </StackLayout>
+            </StackLayout>
+            
+            
+
+
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

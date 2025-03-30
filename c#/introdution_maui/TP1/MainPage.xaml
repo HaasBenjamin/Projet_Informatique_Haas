@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TP1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label
+                Text="Mon premier TP en MAUI !"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Center" 
+                FontSize="32" />
+
+            <Label
+                Text="Entrez un numéro de téléphone au format 0X.XX.XX.XX.XX"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Taper un numéro de téléphone"
+                HorizontalOptions="Center"
+                FontSize="18" />
+
+            <Entry
+                x:Name="entNuméro"
+                HorizontalOptions="Fill"
+                Placeholder = "0X.XX.XX.XX.XX"
+                TextChanged="entNuméro_TextChanged"
+                />
+
+            <Button
+                x:Name="butAppeler"
+                Text="Appelez-moi !" 
+                SemanticProperties.Hint="Déclanche l'appel"
+                Clicked="butAppeler_Clicked"
+                HorizontalOptions="Center"
+                IsEnabled="False"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

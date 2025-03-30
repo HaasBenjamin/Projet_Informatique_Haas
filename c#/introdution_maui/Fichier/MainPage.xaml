@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fichier.MainPage"
+             xmlns:local="clr-namespace:Fichier.ViewModel"
+             Title="Accueil">
+    <ContentPage.BindingContext>
+        <local:VMInitCitations x:Name="initCitations" />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical" Padding="20">
+            <Label Text="Citations" HorizontalOptions="Center"
+                FontSize="Large" FontAttributes="Bold"/>
+            <Label Text="{Binding Count, StringFormat='{0} citations'}" HorizontalOptions="End"
+                x:Name="LblCount"/>
+            <Button VerticalOptions="EndAndExpand"
+                 HorizontalOptions="FillAndExpand" Margin="20"
+                 Text="{Binding ButtonText}"
+                 Command="{Binding DisplayCommand}"/>
+            <Label Text="Application développée par H.B., (c) 2024"
+                 HorizontalOptions="End" FontAttributes="Italic"
+                 Margin="10, 0, 0, 0"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
